@@ -17,6 +17,6 @@ for i in /etc/profile.d/*.sh ; do
 	fi
 
 modprobe snd-bcm2835
-
+./../MY_SONGS/music_player.sh
 done
 unset i
