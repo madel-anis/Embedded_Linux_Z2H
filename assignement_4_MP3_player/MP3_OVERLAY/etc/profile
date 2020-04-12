@@ -1,0 +1,68 @@
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+
+if [ "$PS1" ]; then
+	if [ "`id -u`" -eq 0 ]; then
+		export PS1='ANIS_PI_SHELL>:\w\$ '
+	else
+		export PS1='ANIS_PI_SHELL>:$ '
+	fi
+fi
+
+export EDITOR='/bin/vi'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+	if [ -r "$i" ]; then
+		. $i
+	fi
+
+done
+unset i
+
+
+#creating Global Variable File
+if [ ! -e /Project/Global_Variable ]
+then
+touch /Project/Global_Variable
+fi
+
+#creating Global Flag File
+if [ ! -e /Project/Global_Flag ]
+then
+touch /Project/Global_Flag
+fi
+
+#initalize both the global flag and variable
+echo 0  > /Project/Global_Flag
+echo 0  > /Project/Global_Variable 
+
+
+#creating Commandlines needed as an alias
+alias play="echo 1 > '/Project/Global_Variable'"
+alias pause="echo 2 > '/Project/Global_Variable'"
+alias next="echo 3 > '/Project/Global_Variable'"
+alias previous="echo 4 > '/Project/Global_Variable'"
+alias shuffle="echo 5 > '/Project/Global_Variable'"
+
+
+#Welcome message"
+echo "" 
+echo "" 
+echo "" 
+echo ""
+echo ""
+echo "  Welcome to Buildroot MP3 Player "
+echo "          Sponsored by            "
+echo "  Donia  &   Qandeel    &   Anis  "
+echo ""
+echo "" 
+echo "" 
+echo ""
+
+echo "         3andena Moseka 3'er ay moseka "
+echo " Anis w Donia w Qandeel Yt7adwo Almalal w Linux "
+echo ""
+echo ""
+echo ""
+echo ""
+./../Project/playmusic.bash &

@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Music Player Demon Process
+#
+
+#Give The scripts that are doing to run Names
+USB_Scanner=/Project/USB_Detection.bash
+
+
+start_Setup() 
+{
+
+	#Setup the Sound Card
+	modprobe snd-bcm2835 	
+	
+}
+start_Demon_Scripts() {
+
+		start-stop-daemon -b --start --quiet --exec ${USB_Scanner}
+}
+
+#execute the Functions
+start_Setup
+start_Demon_Scripts
